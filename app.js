@@ -35,3 +35,12 @@ document.addEventListener("click", (event) => {
     }, 300);
   }
 });
+
+function showPointBar() {
+  document.getElementById("pointsModal").classList.remove("hidden");
+}
+
+function hidePointBar(event) {
+  // If event is passed from overlay click or close button
+  document.getElementById("pointsModal").classList.add("hidden");
+}

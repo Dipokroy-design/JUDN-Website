@@ -33,92 +33,106 @@
             <a href="#"></a>All Products
           </li>
           <li
+            onclick="showPointBar()"
             class="hidden lg:flex px-4 py-3 bg-white rounded-md hover:bg-white/50 hover:text-white text-red-500 font-bold"
           >
             <a href="#"></a>Points
           </li>
           <!-- Dialog Modal of Points -->
           <div
-            class="total-points hidden w-[500px] h-[650px] rounded-2xl shadow-2xl"
+            id="pointsModal"
+            class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 hidden"
+            onclick="hidePointBar(event)"
           >
-            <ul class="w-full h-full">
-              <li class="px-4 py-3">
-                <h4 class="text-black text-[16px] font-bold">
-                  500.00 <span class="text-[12px] text-gray-400">Points</span>
-                </h4>
-                <p class="text-[10px] text-gray-600 tracking-wide font-bold">
-                  New points added
-                </p>
-              </li>
-              <hr class="m-2" />
-              <li class="px-4 py-3 flex flex-col gap-2">
-                <p class="text-[14px] font-bold tracking-wide">OVERVIEW</p>
-                <div class="dataof-points flex flex-col gap-2">
-                  <div class="flex flex-row justify-between">
-                    <p class="text-gray-500 font-bold text-[12px]">From</p>
-                    <p class="text-center text-[10px] font-bold">
-                      Series-A shirt
-                    </p>
+            <!-- Modal Content -->
+            <div
+              class="total-points w-[500px] h-[650px] bg-white/60 rounded-2xl shadow-2xl relative overflow-auto"
+              onclick="event.stopPropagation()"
+            >
+              <!-- Close Button -->
+              <button
+                onclick="hidePointBar()"
+                class="absolute top-3 right-3 text-gray-500 hover:text-black text-xl font-bold"
+              >
+                ✕
+              </button>
+
+              <!-- Your content remains unchanged -->
+              <ul class="w-full h-full p-4 pt-10">
+                <li class="px-4 py-3">
+                  <h4 class="text-black text-[16px] font-bold">
+                    500.00 <span class="text-[12px] text-gray-400">Points</span>
+                  </h4>
+                  <p class="text-[10px] text-gray-600 tracking-wide font-bold">
+                    New points added
+                  </p>
+                </li>
+                <hr class="m-2" />
+                <li class="px-4 py-3 flex flex-col gap-2">
+                  <p class="text-[14px] font-bold tracking-wide">OVERVIEW</p>
+                  <div class="dataof-points flex flex-col gap-2">
+                    <div class="flex flex-row justify-between">
+                      <p class="text-gray-500 font-bold text-[12px]">From</p>
+                      <p class="text-center text-[10px] font-bold">
+                        Series-A shirt
+                      </p>
+                    </div>
+                    <div class="flex flex-row justify-between">
+                      <p class="text-gray-500 font-bold text-[12px]">Date</p>
+                      <p class="text-center text-[10px] font-bold">
+                        24.06.2025
+                      </p>
+                    </div>
+                    <div class="flex flex-row justify-between">
+                      <p class="text-gray-500 font-bold text-[12px]">Amount</p>
+                      <p class="text-green-700 text-[10px] font-bold">
+                        ৳800.00 <span>(+50Points)</span>
+                      </p>
+                    </div>
                   </div>
-                  <div class="flex flex-row justify-between">
-                    <p class="text-gray-500 font-bold text-[12px]">Date</p>
-                    <p class="text-center text-[10px] font-bold">24.06.2025</p>
+                </li>
+                <li class="px-4 py-3 flex flex-col gap-4">
+                  <p class="text-[14px] font-bold tracking-wide">HISTORY</p>
+                  <div>
+                    <ul class="px-4 flex flex-col gap-5">
+                      <li class="flex flex-row items-center gap-2.5">
+                        <span class="text-[20px]">•</span>
+                        <div>
+                          <p class="text-[12px] font-light">01 Jan, 2025</p>
+                          <p class="text-[12px]">
+                            Bought 800 Taka earn 50 Points
+                          </p>
+                        </div>
+                      </li>
+                      <li class="flex flex-row items-center gap-2.5">
+                        <span class="text-[20px]">•</span>
+                        <div>
+                          <p class="text-[12px] font-light">01 Jan, 2025</p>
+                          <p class="text-[12px]">
+                            Bought 800 Taka earn 50 Points
+                          </p>
+                        </div>
+                      </li>
+                      <li class="flex flex-row items-center gap-2.5">
+                        <span class="text-[20px]">•</span>
+                        <div>
+                          <p class="text-[12px] font-light">01 Jan, 2025</p>
+                          <p class="text-[12px]">
+                            Bought 800 Taka earn 50 Points
+                          </p>
+                        </div>
+                      </li>
+                      <!-- Repeat history items as needed -->
+                    </ul>
                   </div>
-                  <div class="flex flex-row justify-between">
-                    <p class="text-gray-500 font-bold text-[12px]">Amount</p>
-                    <p class="text-green-700 text-[10px] font-bold">
-                      ৳800.00 <span>(+50Points)</span>
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="px-4 py-3 flex flex-col gap-4">
-                <p class="text-[14px] font-bold tracking-wide">HISTORY</p>
-                <div>
-                  <ul class="px-4 flex flex-col gap-5">
-                    <li class="flex flex-row items-center gap-2.5">
-                      <span class="text-[20px]">•</span>
-                      <div>
-                        <p class="text-[12px] font-light list-disc list-inside">
-                          01 Jan, 2025
-                        </p>
-                        <p class="text-[12px]">
-                          Bought 800 Taka earn 50 Points
-                        </p>
-                      </div>
-                    </li>
-                    <li class="flex flex-row items-center gap-2.5">
-                      <span class="text-[20px]">•</span>
-                      <div>
-                        <p class="text-[12px] font-light list-disc list-inside">
-                          01 Jan, 2025
-                        </p>
-                        <p class="text-[12px]">
-                          Bought 800 Taka earn 50 Points
-                        </p>
-                      </div>
-                    </li>
-                    <li class="flex flex-row items-center gap-2.5">
-                      <span class="text-[20px]">•</span>
-                      <div>
-                        <p class="text-[12px] font-light list-disc list-inside">
-                          01 Jan, 2025
-                        </p>
-                        <p class="text-[12px]">
-                          Bought 800 Taka earn 50 Points
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <button
-                  class="w-full border rounded-md border-gray-400 text-[16px] font-light hover:font-normal"
-                >
-                  See all details
-                </button>
-              </li>
-              <li></li>
-            </ul>
+                  <button
+                    class="w-full border rounded-md border-gray-400 text-[16px] font-light hover:font-normal"
+                  >
+                    See all details
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
           <li
             class="hidden lg:flex px-4 py-3 bg-white rounded-md hover:bg-white/50 hover:text-red-600 text-red-500 font-bold"
