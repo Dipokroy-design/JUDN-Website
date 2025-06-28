@@ -44,3 +44,51 @@ function hidePointBar(event) {
   // If event is passed from overlay click or close button
   document.getElementById("pointsModal").classList.add("hidden");
 }
+
+function showProfileModal() {
+  document.getElementById("profileModal").classList.remove("hidden");
+}
+
+function hideProfileModal(event) {
+  document.getElementById("profileModal").classList.add("hidden");
+}
+// this is a animation code for scrolling
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(".autoShow");
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target); // Animate once
+        }
+      });
+    },
+    {
+      threshold: 0.25,
+    }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+});
+
+// Blur scrolling animation
+const blurElements = document.querySelectorAll(".autoBlue");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("inView");
+        // Uncomment to blur again when out of view
+        // observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.3,
+  }
+);
+
+blurElements.forEach((el) => observer.observe(el));

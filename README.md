@@ -127,3 +127,119 @@ svg path {
   }
 }
 ```
+
+<!-- autoShowAnimation -->
+
+```css
+.autoShow {
+  animation: autoShowAnimation both;
+  animation-timeline: view(70% 5%);
+}
+@keyframes autoShowAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(200px) scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+```
+
+Another Option
+
+```css
+/* Initial state */
+.autoShow {
+  opacity: 0;
+  transform: translateY(100px) scale(0.95);
+  transition: all 0.6s ease-out;
+  will-change: transform, opacity;
+}
+
+/* Animate in when in view */
+.autoShow.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+```
+
+```js
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(".autoShow");
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target); // Animate once
+        }
+      });
+    },
+    {
+      threshold: 0.25,
+    }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+});
+```
+
+<!-- autoBlurAnimation -->
+
+# ✅ autoBlurAnimation Production-Ready (Works Everywhere)
+
+```css
+.autoBlue2 {
+  animation: autoBlurAnimation linear both;
+  animation-timeline: view();
+}
+@keyframes autoBlurAnimation {
+  0% {
+    filter: blur(40px);
+  }
+  45%,
+  55% {
+    filter: blur(0);
+  }
+  100% {
+    filter: blur(40px);
+  }
+}
+```
+
+# ✅ Production-Ready Alternative (Works Everywhere)
+
+```css
+.autoBlue {
+  filter: blur(40px);
+  transition: filter 0.8s ease-in-out;
+}
+
+.autoBlue.inView {
+  filter: blur(0px);
+}
+```
+
+```js
+const blurElements = document.querySelectorAll(".autoBlue");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("inView");
+        // Uncomment to blur again when out of view
+        // observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.3,
+  }
+);
+
+blurElements.forEach((el) => observer.observe(el));
+```

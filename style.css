@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 @layer utilities {
+  .container {
+    margin: auto;
+    padding: 10px;
+  }
   .logout-btn a {
     font-size: large;
     overflow: hidden;
@@ -69,5 +73,49 @@
       stroke-dashoffset: 0;
       fill: #fff;
     }
+  }
+  /* scrolling animation */
+  .autoShow {
+    opacity: 0;
+    transform: translateY(100px) scale(0.95);
+    transition: all 0.6s ease-out;
+    will-change: transform, opacity;
+  }
+
+  /* Animate in when in view */
+  .autoShow.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* blur scrolling animation */
+  .autoBlue {
+    filter: blur(40px);
+    transition: filter 0.8s ease-in-out;
+  }
+
+  .autoBlue.inView {
+    filter: blur(0px);
+  }
+
+  /* another blur animation */
+  .autoBlue2 {
+    animation: autoBlurAnimation linear both;
+    animation-timeline: view();
+  }
+  @keyframes autoBlurAnimation {
+    0% {
+      filter: blur(40px);
+    }
+    45%,
+    55% {
+      filter: blur(0);
+    }
+    100% {
+      filter: blur(40px);
+    }
+  }
+  .font1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
   }
 }
