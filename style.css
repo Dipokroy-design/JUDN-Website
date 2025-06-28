@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .logout-btn a {
+    font-size: large;
+    overflow: hidden;
+  }
+  #mob-navbar {
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+  .banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: visible;
+    position: relative;
+    z-index: -1;
+  }
+
+  .banner .slider {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+  }
+
+  @keyframes autoRun {
+    from {
+      transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }
+    to {
+      transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+  }
+
+  .banner .slider .item {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(calc((var(--position) - 1) * (360deg / var(--quantity))))
+      translateZ(550px);
+  }
+
+  .banner .slider .item img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+  }
+  svg path {
+    fill: transparent;
+    stroke: #ffffff;
+    stroke-width: 0.1;
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: textAnimation 4s ease-in-out 1 forwards;
+  }
+
+  @keyframes textAnimation {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    80% {
+      fill: transparent;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      fill: #fff;
+    }
+  }
+}
