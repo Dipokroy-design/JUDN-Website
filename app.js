@@ -45,13 +45,6 @@ function hidePointBar(event) {
   document.getElementById("pointsModal").classList.add("hidden");
 }
 
-function showProfileModal() {
-  document.getElementById("profileModal").classList.remove("hidden");
-}
-
-function hideProfileModal(event) {
-  document.getElementById("profileModal").classList.add("hidden");
-}
 // this is a animation code for scrolling
 document.addEventListener("DOMContentLoaded", () => {
   const elements = document.querySelectorAll(".autoShow");
@@ -73,22 +66,38 @@ document.addEventListener("DOMContentLoaded", () => {
   elements.forEach((el) => observer.observe(el));
 });
 
-// Blur scrolling animation
-const blurElements = document.querySelectorAll(".autoBlue");
+// profile modal - line 157-227
+// Profile Modal JS
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("inView");
-        // Uncomment to blur again when out of view
-        // observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.3,
+function showProfileModal() {
+  const modal = document.getElementById("profileModal");
+  modal.classList.remove("hidden");
+  modal.style.transform = "translateX(0)";
+}
+
+function hideProfileModal(event) {
+  const modal = document.getElementById("profileModal");
+  if (!event || event.target === modal) {
+    modal.style.transform = "translateX(100%)";
+    setTimeout(() => {
+      modal.classList.add("hidden");
+    }, 300); // match transition duration
   }
-);
+}
 
-blurElements.forEach((el) => observer.observe(el));
+// image to product card page -
+// filepath: /Users/masud/Desktop/JUDN-Website/index.html
+function openProductCard(productId, imageUrl) {
+  localStorage.setItem("selectedProductId", productId);
+  localStorage.setItem("selectedGalleryImage", imageUrl); // Optional, for fallback
+  window.location.href = "productCard.html";
+}
+
+// this is a alart message logic
+function showAlart(message) {
+  document.getElementById("alertMessage").textContent = message;
+  document.getElementById("customAlert").classList.remove("hidden");
+}
+function closeCustomAlert() {
+  document.getElementById("customAlert").classList.add("hidden");
+}

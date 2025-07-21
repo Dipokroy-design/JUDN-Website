@@ -243,3 +243,273 @@ const observer = new IntersectionObserver(
 
 blurElements.forEach((el) => observer.observe(el));
 ```
+
+## Favicon design links -
+
+```html
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+```
+
+<!-- deleted code  -->
+
+<!--
+<section
+      class="w-full min-h-screen px-4 py-20 flex flex-col justify-center items-center gap-8 text-center bg-black"
+      aria-labelledby="judn-message-heading"
+    >
+      <p
+        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
+        aria-label="JUDN isn’t just a brand — it’s a movement."
+      >
+        "JUDN isn’t just a brand — it’s a movement."
+      </p>
+
+      <p
+        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
+        aria-label="Made for those who stand out and think differently."
+      >
+        Made for those who stand out and think differently.
+      </p>
+
+      <p
+        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
+        aria-label="Every piece is crafted with purpose,"
+      >
+        Every piece is crafted with purpose,
+      </p>
+
+      <p
+        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
+        aria-label="Built for bold expression."
+      >
+        Built for bold expression.
+      </p>
+
+      <p
+        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
+        aria-label="This is more than fashion."
+      >
+        This is more than fashion.
+      </p>
+
+      <p
+        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
+        aria-label="This is JUDN."
+      >
+        This is JUDN."
+      </p>
+    </section>
+ -->
+
+<!-- product section -->
+
+```html
+<section class="w-screen mt-10">
+  <div class="main w-full">
+    <!-- text -->
+    <div class="textSection w-full flex flex-col items-center gap-5 h-[150px]">
+      <h1 class="text-4xl font-bold tracking-tight">Our Featured Products</h1>
+      <h5 class="text-[18px] text-[#7d7d7d]">Get the skin you want to feel</h5>
+    </div>
+    <!-- cards -->
+    <div class="featureCards w-full flex justify-center items-center">
+      <div class="cards flex flex-row items-center gap-10">
+        <!-- 1st card -->
+        <div
+          class="card1 w-[300px] h-[450px] flex flex-col bg-white/40 shadow-md rounded-sm"
+        >
+          <div class="image-card rounded-t-sm">
+            <img src="../assets/products/centella.png" class="base-img" />
+            <img src="../assets/products/centella2.jpg" class="hover-img" />
+          </div>
+
+          <div
+            class="text-wraper w-full h-[20%] flex flex-col items-center text-center"
+          >
+            <p
+              class="flex flex-row items-center gap-1 text-green-500 font-bold text-[14px] mt-3"
+            >
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-4 text-green-500"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m8.25 7.5.415-.207a.75.75 0 0 1 1.085.67V10.5m0 0h6m-6 0h-1.5m1.5 0v5.438c0 .354.161.697.473.865a3.751 3.751 0 0 0 5.452-2.553c.083-.409-.263-.75-.68-.75h-.745M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+              </span>
+              2,200
+            </p>
+            <p class="font-semibold tracking-tight text-[14px] text-black mt-2">
+              Centella Tone Brightening <br />
+              Capsule Ampoule - 50ml
+            </p>
+            <button
+              class="bt bg-white/50 px-6 py-2 mt-2 rounded-md font-extrabold border border-black/50 hover:border-black/10 transition-all duration-300"
+            >
+              Buy Now
+            </button>
+          </div>
+        </div>
+        <!-- 2nd card -->
+        <div
+          class="card1 w-[300px] h-[450px] flex flex-col bg-white/40 shadow-md rounded-sm"
+        >
+          <div class="image-card w-full h-[80%] rounded-t-sm">
+            <img
+              src="../assets/products/creamToneBrighteningCapsuleCream.png"
+              class="base-img"
+            />
+            <img
+              src="../assets/products/creamToneBrighteningCapsuleCream2.jpg"
+              class="hover-img"
+            />
+          </div>
+
+          <div
+            class="text-wraper w-full h-[20%] flex flex-col items-center text-center"
+          >
+            <p
+              class="flex flex-row items-center gap-1 text-green-500 font-bold text-[14px] mt-3"
+            >
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-4 text-green-500"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m8.25 7.5.415-.207a.75.75 0 0 1 1.085.67V10.5m0 0h6m-6 0h-1.5m1.5 0v5.438c0 .354.161.697.473.865a3.751 3.751 0 0 0 5.452-2.553c.083-.409-.263-.75-.68-.75h-.745M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+              </span>
+              2,200
+            </p>
+            <p class="font-semibold tracking-tight text-[14px] text-black mt-2">
+              Cream Tone Brightening Capsule Cream
+            </p>
+            <button
+              class="bt bg-white/50 px-6 py-2 mt-5 rounded-md font-extrabold border border-black/50 hover:border-black/10 transition-all duration-300"
+            >
+              Buy Now
+            </button>
+          </div>
+        </div>
+        <!-- 3nd card -->
+        <div
+          class="card1 w-[300px] h-[450px] flex flex-col bg-white/40 shadow-md rounded-sm"
+        >
+          <div class="image-card w-full h-[80%] rounded-t-sm">
+            <img
+              src="../assets/products/DarkSpotCorrectingGlow2.jpg"
+              class="base-img"
+            />
+            <img
+              src="../assets/products/DarkSpotCorrectingGlow.png"
+              class="hover-img"
+            />
+          </div>
+
+          <div
+            class="text-wraper w-full h-[20%] flex flex-col items-center text-center"
+          >
+            <p
+              class="flex flex-row items-center gap-1 text-green-500 font-bold text-[14px] mt-3"
+            >
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-4 text-green-500"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m8.25 7.5.415-.207a.75.75 0 0 1 1.085.67V10.5m0 0h6m-6 0h-1.5m1.5 0v5.438c0 .354.161.697.473.865a3.751 3.751 0 0 0 5.452-2.553c.083-.409-.263-.75-.68-.75h-.745M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+              </span>
+              2,200
+            </p>
+            <p class="font-semibold tracking-tight text-[14px] text-black mt-2">
+              Dark Spot Correcting Glow
+            </p>
+            <button
+              class="bt bg-white/50 px-6 py-2 mt-4 rounded-md font-extrabold border border-black/50 hover:border-black/10 transition-all duration-300"
+            >
+              Buy Now
+            </button>
+          </div>
+        </div>
+        <!-- 4nd card -->
+        <div
+          class="card1 w-[300px] h-[450px] flex flex-col bg-white/40 shadow-md rounded-sm"
+        >
+          <div class="image-card w-full h-[80%] rounded-t-sm">
+            <img
+              src="../assets/products/GreenPlumRefreshingToner.png"
+              class="base-img"
+            />
+            <img
+              src="../assets/products/GreenPlumRefreshingToner2.jpg"
+              class="hover-img"
+            />
+          </div>
+
+          <div
+            class="text-wraper w-full h-[20%] flex flex-col items-center text-center"
+          >
+            <p
+              class="flex flex-row items-center gap-1 text-green-500 font-bold text-[14px] mt-3"
+            >
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-4 text-green-500"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m8.25 7.5.415-.207a.75.75 0 0 1 1.085.67V10.5m0 0h6m-6 0h-1.5m1.5 0v5.438c0 .354.161.697.473.865a3.751 3.751 0 0 0 5.452-2.553c.083-.409-.263-.75-.68-.75h-.745M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+              </span>
+              2,200
+            </p>
+            <p class="font-semibold tracking-tight text-[14px] text-black mt-2">
+              Green Plum Refreshing Toner
+            </p>
+            <button
+              class="bt bg-white/50 px-6 py-2 mt-4 rounded-md font-extrabold border border-black/50 hover:border-black/10 transition-all duration-300"
+            >
+              Buy Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+```

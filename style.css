@@ -53,7 +53,7 @@
     height: 80%;
     object-fit: cover;
   }
-  svg path {
+  .title svg path {
     fill: transparent;
     stroke: #ffffff;
     stroke-width: 0.1;
@@ -115,7 +115,224 @@
       filter: blur(40px);
     }
   }
+
+  /* custom css */
   .font1 {
     font-family: Georgia, "Times New Roman", Times, serif;
+  }
+
+  /* product section - background */
+  .productSection {
+    background-image: url(./img/logo\ copy.svg);
+    background-position: center;
+    background-size: cover;
+  }
+  /* feature product */
+  .image-card {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .image-card img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  .base-img {
+    z-index: 1;
+  }
+
+  .hover-img {
+    z-index: 2;
+    opacity: 0;
+  }
+  /* custom css */
+  .txt {
+    font-weight: 600;
+  }
+
+  /* product section */
+  @keyframes judn-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  .auto-scroll:hover {
+    animation-play-state: paused !important;
+  }
+
+  /* hover on scale effect */
+  .hover-scale-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hover-scale-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+    background-repeat: inherit;
+    transition: transform 0.5s ease-in-out;
+    z-index: 0;
+  }
+
+  .hover-scale-bg:hover::before {
+    transform: scale(1.1);
+  }
+
+  .overlay-content {
+    position: relative;
+    z-index: 10;
+    color: white;
+    padding: 2rem;
+  }
+
+  /* upcoming product1 - image shine effect */
+  .bg-shine1 {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    background-position: center;
+    background-size: cover;
+    align-items: end;
+    justify-content: start;
+    color: white;
+  }
+
+  .bg-shine1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/products/suit1.jpg"); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    transition: transform 0.8s ease;
+    will-change: transform;
+  }
+
+  .bg-shine1:hover::before {
+    transform: scale(1.05);
+  }
+
+  /* Shine effect */
+  .shine-overlay {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      130deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.334) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .bg-shine1:hover .shine-overlay {
+    animation: shine-bg 0.5s ease-in-out forwards;
+  }
+
+  @keyframes shine-bg {
+    0% {
+      left: -150%;
+    }
+    100% {
+      left: 150%;
+    }
+  }
+
+  .content {
+    position: relative;
+    z-index: 2; /* on top of bg + shine */
+  }
+  /* upcoming product2 - image shine effect */
+  .bg-shine2 {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    color: white;
+  }
+
+  .bg-shine2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/products/suit2.jpg"); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    transition: transform 0.8s ease;
+    will-change: transform;
+  }
+
+  .bg-shine2:hover::before {
+    transform: scale(1.05);
+  }
+
+  /* Shine effect */
+  .shine-overlay {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      130deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.334) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .bg-shine2:hover .shine-overlay {
+    animation: shine-bg 0.5s ease-in-out forwards;
+  }
+
+  @keyframes shine-bg {
+    0% {
+      left: -150%;
+    }
+    100% {
+      left: 150%;
+    }
+  }
+
+  .content {
+    position: relative;
+    z-index: 2; /* on top of bg + shine */
   }
 }

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="output.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="img/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/favicon-16x16.png"
+    />
+    <link rel="manifest" href="img/site.webmanifest" />
+    <title>JUDN Products</title>
+  </head>
+  <body class="bg-[#f7f7f7] min-h-screen font-sans">
+    <!-- Header -->
+    <header
+      class="w-full px-8 py-6 flex items-center justify-between bg-white shadow"
+    >
+      <h1
+        class="text-3xl font-bold tracking-wide text-[#fa2d37] cursor-pointer"
+        onclick="window.location.href='index.html'"
+      >
+        JUDN
+      </h1>
+      <nav class="flex items-center gap-6">
+        <a
+          href="index.html"
+          class="hidden lg:flex text-gray-700 font-semibold hover:text-[#fa2d37] transition"
+          >Home</a
+        >
+        <a
+          href="https://wa.me/message/6JX7ZWPWUNBCF1"
+          class="hidden lg:flex text-gray-700 font-semibold hover:text-[#fa2d37] transition"
+          >Contact</a
+        >
+        <button
+          onclick="showAlart()"
+          class="px-5 py-2 bg-[#fa2d37] text-white rounded-lg font-bold shadow hover:bg-[#e0222e] transition"
+        >
+          Profile
+        </button>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-10">
+      <!-- Page Title & Filter Bar -->
+      <div
+        class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8"
+      >
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
+            All Products
+          </h2>
+          <p class="text-gray-500 text-base font-medium">
+            Browse our latest collection
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <select
+            id="sortSelect"
+            class="px-4 py-2 border rounded-lg text-gray-700 bg-white shadow focus:outline-none"
+          >
+            <option value="latest">Latest</option>
+            <option value="popular">Popular</option>
+            <option value="priceLow">Price: Low to High</option>
+            <option value="priceHigh">Price: High to Low</option>
+          </select>
+          <button
+            class="px-4 py-2 bg-[#fa2d37] text-white rounded-lg font-semibold shadow hover:bg-[#e0222e] transition"
+          >
+            Filter
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <section
+        id="productGrid"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        <!-- Cards will be rendered by JS -->
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-screen h-[550px] bg-[#f7f7f7] mt-30">
+      <div class="firstFooter">
+        <div class="first">
+          <ul class="flex flex-row justify-between p-4 pt-25">
+            <li>
+              <ul class="flex flex-col gap-2.5">
+                <li class="text-[14px] lg:text-xl txt">
+                  <a href="index.html">JUDN</a>
+                </li>
+                <li
+                  class="lg:leading-7 text-gray-500 text-[6px] lg:text-[14px]"
+                >
+                  Find a location nearest <br />
+                  you. See<a
+                    class="text-[6px] lg:text-[14px] font-semibold text-black underline decoration-gray-300 lg:tracking-wide"
+                    href="#"
+                  >
+                    Our Stores</a
+                  >
+                </li>
+                <li class="flex flex-col leading-7">
+                  <a
+                    class="text-[6px] lg:text-[14px] font-semibold tracking-wide"
+                    href="#"
+                    >+880-188 4903 850</a
+                  >
+                  <a class="text-[6px] lg:text-[14px] text-gray-500" href="#"
+                    >judnhouse@gmail.com</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ul class="flex flex-col gap-4">
+                <li class="text-[14px] lg:text-xl txt">
+                  <a href="#">Useful Links</a>
+                </li>
+                <li
+                  class="text-[6px] lg:text-[14px] txt text-gray-500 hover:text-black transition-all duration-200"
+                >
+                  <a href="#">New Products</a>
+                </li>
+                <li
+                  class="text-[6px] lg:text-[14px] txt text-gray-500 hover:text-black transition-all duration-200"
+                >
+                  <a href="#">Best Sellers</a>
+                </li>
+                <li
+                  class="text-[6px] lg:text-[14px] txt text-gray-500 hover:text-black transition-all duration-200"
+                >
+                  <a href="#">Bundle & Save</a>
+                </li>
+                <li
+                  class="text-[6px] lg:text-[14px] txt text-gray-500 hover:text-black transition-all duration-200"
+                >
+                  <a href="#">Online Gift Card</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ul class="flex flex-col gap-4">
+                <li class="text-[14px] lg:text-xl txt">
+                  <a href="#">Infomation</a>
+                </li>
+                <li
+                  class="text-[6px] lg:text-[14px] txt text-gray-500 hover:text-black transition-all duration-200"
+                >
+                  <a href="#">Start a Return</a>
+                </li>
+                <li
+                  class="text-[6px] lg:text-[14px] txt text-gray-500 hover:text-black transition-all duration-200"
+                >
+                  <a href="#">Contact Us</a>
+                </li>
+                <li
+                  class="text-[6px] lg:text-[14px] txt text-gray-500 hover:text-black transition-all duration-200"
+                >
+                  <a href="#">Shipping FAQ</a>
+                </li>
+                <li
+                  class="text-[6px] lg:text-[14px] txt text-gray-500 hover:text-black transition-all duration-200"
+                >
+                  <a href="#">Terms & Conditions</a>
+                </li>
+                <li
+                  class="text-[6px] lg:text-[14px] txt text-gray-500 hover:text-black transition-all duration-200"
+                >
+                  <a href="#"></a>Privacy Policy
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ul class="flex flex-col gap-10">
+                <li class="text-[14px] lg:text-xl font-semibold">
+                  Good emails.
+                </li>
+                <li class="text-[8px] lg:text-[15px] text-gray-500 txt">
+                  Enter your email below to be the first to know about new
+                  collections <br />
+                  and product launches.
+                </li>
+                <li class="flex flex-row gap-0">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                    id="subscribeGmail"
+                    class="pl-1.5 lg:pl-4 py-0.5 lg:py-3 w-full bg-white border border-gray-200 rounded-l-sm outline-none placeholder:text-left placeholder:tracking-tight text-left"
+                  />
+                  <button
+                    class="px-7 py-3 bg-black hover:bg-[#516f49] text-white tracking-tight font-semibold rounded-r-sm"
+                  >
+                    Subscribe
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="second p-4 pt-20">
+          <ul class="flex flex-row justify-between items-center">
+            <li>
+              <ul class="flex flex-row items-center gap-4">
+                <li class="text-[15px] text-gray-500 tracking-tight leading-5">
+                  © JUDB 2025 |
+                  <a
+                    class="hover:text-black txt"
+                    href="https://github.com/Dipokroy-design"
+                    >Powered by @Dipok</a
+                  >
+                </li>
+                <li class="flex flex-row items-center gap-3">
+                  <a href="#">
+                    <svg
+                      fill="#000000"
+                      width="25px"
+                      height="25px"
+                      viewBox="0 0 32 32"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M20.445 5h-8.891A6.559 6.559 0 0 0 5 11.554v8.891A6.559 6.559 0 0 0 11.554 27h8.891a6.56 6.56 0 0 0 6.554-6.555v-8.891A6.557 6.557 0 0 0 20.445 5zm4.342 15.445a4.343 4.343 0 0 1-4.342 4.342h-8.891a4.341 4.341 0 0 1-4.341-4.342v-8.891a4.34 4.34 0 0 1 4.341-4.341h8.891a4.342 4.342 0 0 1 4.341 4.341l.001 8.891z"
+                      />
+                      <path
+                        d="M16 10.312c-3.138 0-5.688 2.551-5.688 5.688s2.551 5.688 5.688 5.688 5.688-2.551 5.688-5.688-2.55-5.688-5.688-5.688zm0 9.163a3.475 3.475 0 1 1-.001-6.95 3.475 3.475 0 0 1 .001 6.95zM21.7 8.991a1.363 1.363 0 1 1-1.364 1.364c0-.752.51-1.364 1.364-1.364z"
+                      />
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/Blancbeautybynature/">
+                    <svg
+                      fill="#000000"
+                      width="25px"
+                      height="25px"
+                      viewBox="-5.5 0 32 32"
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title>facebook</title>
+                      <path
+                        d="M1.188 5.594h18.438c0.625 0 1.188 0.563 1.188 1.188v18.438c0 0.625-0.563 1.188-1.188 1.188h-18.438c-0.625 0-1.188-0.563-1.188-1.188v-18.438c0-0.625 0.563-1.188 1.188-1.188zM14.781 17.281h2.875l0.125-2.75h-3v-2.031c0-0.781 0.156-1.219 1.156-1.219h1.75l0.063-2.563s-0.781-0.125-1.906-0.125c-2.75 0-3.969 1.719-3.969 3.563v2.375h-2.031v2.75h2.031v7.625h2.906v-7.625z"
+                      ></path>
+                    </svg>
+                  </a>
+                  <a href="https://wa.me/message/6JX7ZWPWUNBCF1">
+                    <svg
+                      fill="#000000"
+                      width="20px"
+                      height="20px"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      data-name="Layer 1"
+                    >
+                      <path
+                        d="M22,6.55a12.61,12.61,0,0,0-.1-1.29,4.29,4.29,0,0,0-.37-1.08,3.66,3.66,0,0,0-.71-1,3.91,3.91,0,0,0-1-.71,4.28,4.28,0,0,0-1.08-.36A10.21,10.21,0,0,0,17.46,2H6.55a12.61,12.61,0,0,0-1.29.1,4.29,4.29,0,0,0-1.08.37,3.66,3.66,0,0,0-1,.71,3.91,3.91,0,0,0-.71,1,4.28,4.28,0,0,0-.36,1.08A10.21,10.21,0,0,0,2,6.54C2,6.73,2,7,2,7.08v9.84c0,.11,0,.35,0,.53a12.61,12.61,0,0,0,.1,1.29,4.29,4.29,0,0,0,.37,1.08,3.66,3.66,0,0,0,.71,1,3.91,3.91,0,0,0,1,.71,4.28,4.28,0,0,0,1.08.36A10.21,10.21,0,0,0,6.54,22H17.45a12.61,12.61,0,0,0,1.29-.1,4.29,4.29,0,0,0,1.08-.37,3.66,3.66,0,0,0,1-.71,3.91,3.91,0,0,0,.71-1,4.28,4.28,0,0,0,.36-1.08A10.21,10.21,0,0,0,22,17.46c0-.19,0-.43,0-.54V7.08C22,7,22,6.73,22,6.55ZM12.23,19h0A7.12,7.12,0,0,1,8.8,18.1L5,19.1l1-3.72a7.11,7.11,0,0,1-1-3.58A7.18,7.18,0,1,1,12.23,19Zm0-13.13A6,6,0,0,0,7.18,15l.14.23-.6,2.19L9,16.8l.22.13a6,6,0,0,0,3,.83h0a6,6,0,0,0,6-6,6,6,0,0,0-6-6Zm3.5,8.52a1.82,1.82,0,0,1-1.21.85,2.33,2.33,0,0,1-1.12-.07,8.9,8.9,0,0,1-1-.38,8,8,0,0,1-3.06-2.7,3.48,3.48,0,0,1-.73-1.85,2,2,0,0,1,.63-1.5.65.65,0,0,1,.48-.22H10c.11,0,.26,0,.4.31s.51,1.24.56,1.33a.34.34,0,0,1,0,.31,1.14,1.14,0,0,1-.18.3c-.09.11-.19.24-.27.32s-.18.18-.08.36a5.56,5.56,0,0,0,1,1.24,5,5,0,0,0,1.44.89c.18.09.29.08.39,0s.45-.52.57-.7.24-.15.4-.09,1.05.49,1.23.58.29.13.34.21A1.56,1.56,0,0,1,15.73,14.36Z"
+                      />
+                    </svg>
+                  </a>
+                  <a href="https://www.tiktok.com/@blancbeautybynature">
+                    <svg
+                      fill="#000000"
+                      width="20px"
+                      height="20px"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21,2H3A1,1,0,0,0,2,3V21a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V3A1,1,0,0,0,21,2Zm-3.281,8.725h0c-.109.011-.219.016-.328.017A3.571,3.571,0,0,1,14.4,9.129v5.493a4.061,4.061,0,1,1-4.06-4.06c.085,0,.167.008.251.013v2a2.067,2.067,0,1,0-.251,4.119A2.123,2.123,0,0,0,12.5,14.649l.02-9.331h1.914A3.564,3.564,0,0,0,17.719,8.5Z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="text-4xl font-bold">
+              <a href="#">JUDN</a>
+            </li>
+            <li>
+              <ul class="flex flex-row gap-2.5">
+                <!-- Bikas -->
+                <li>
+                  <svg
+                    class="bg-white rounded-[3px] border border-gray-200"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    width="38"
+                    viewBox="-16.1997 -11.07275 140.3974 66.4365"
+                  >
+                    <g fill="none">
+                      <path
+                        fill="#DF146E"
+                        d="M0 12.296c.297.027.597.08.917.08.301 0 .575-.053.917-.08v9.816c.964-1.647 2.18-2.733 3.967-2.733 3.23 0 4.63 3.206 4.63 6.149 0 3.527-1.882 6.898-5.181 6.898-1.879 0-2.842-1.163-3.257-1.885-.549.477-1.032 1.062-1.559 1.59H0zm1.786 14.426c0 2.863 1.217 4.855 3.208 4.855 2.595 0 3.419-3.472 3.419-5.942 0-2.862-.94-5.118-3.185-5.145-2.613-.025-3.442 3.078-3.442 6.232z"
+                      />
+                      <path
+                        fill="#221F1F"
+                        d="M18.866 18.645l-1.949 2.504c1.832 2.681 3.733 5.299 5.572 8.008l1.852 2.909v.147c-.456-.028-.871-.086-1.262-.086-.433 0-.867.058-1.28.086-.505-.932-1.012-1.803-1.584-2.65l-5.001-7.422c-.112-.118-.387-.204-.387-.089v10.16c-.366-.028-.685-.086-1.007-.086-.344 0-.688.058-1.009.086V12.296c.32.029.665.09 1.009.09.321 0 .641-.061 1.007-.09v8.998c.025.172.344.058.573-.173.417-.408.895-1.022 1.215-1.426l5.641-7.4c.296.029.592.09.919.09.273 0 .569-.061.891-.09zm15.175 11.338c0 1.035-.07 1.569 1.284 1.223v.582c-.163.081-.437.211-.687.265-1.193.24-2.182.029-2.364-1.537l-.204.239c-.962 1.114-2.015 1.671-3.397 1.671-1.622 0-3.043-1.273-3.043-3.239 0-3.021 2.08-3.421 4.239-3.818 1.813-.347 2.427-.501 2.427-1.775 0-1.96-.961-3.104-2.681-3.104-1.671 0-2.564 1.248-2.729 1.832h-.251v-1.487c1.1-.871 2.341-1.456 3.69-1.456 2.41 0 3.716 1.456 3.716 4.455zm-1.836-4.375l-.804.187c-1.555.342-3.898.61-3.898 3.023 0 1.668.855 2.493 2.249 2.493.618 0 1.398-.502 1.83-1.007.167-.186.624-.64.624-.824v-3.872zm5.918 4.03c.547 1.039 1.558 1.965 2.63 1.965 1.126 0 2.251-1.011 2.251-2.416 0-3.579-5.412-1.244-5.412-5.885 0-2.546 1.675-3.923 3.739-3.923 1.191 0 2.177.395 2.589.687-.227.61-.411 1.246-.548 1.885h-.207c-.298-.875-1.1-1.755-1.951-1.755-1.143 0-2.084.775-2.084 2.205 0 3.394 5.411 1.589 5.411 5.834 0 2.837-2.199 4.191-4.22 4.191-.937 0-2.065-.295-2.867-.849.186-.636.392-1.272.485-1.939zm9.512-17.342c.298.027.593.08.915.08.302 0 .575-.053.917-.08v9.655c.801-1.621 2.065-2.572 3.693-2.572 2.656 0 3.689 1.829 3.689 5.169v7.666c-.347-.028-.62-.083-.916-.083-.323 0-.621.056-.92.083v-7.057c0-2.943-.595-4.402-2.542-4.402-2.064 0-3.003 1.488-3.003 4.24v7.219c-.341-.028-.614-.083-.917-.083-.321 0-.617.056-.915.083V12.296z"
+                      />
+                      <path
+                        fill="#DF146E"
+                        d="M105.814 44.291H65.686c-1.201 0-2.182-.983-2.182-2.184V2.186C63.504.982 64.485 0 65.686 0h40.128c1.203 0 2.184.982 2.184 2.186v39.921c0 1.201-.981 2.184-2.184 2.184"
+                      />
+                      <path
+                        fill="#FFF"
+                        d="M95.398 24.251l-14.107-2.246 1.909 8.329zm.572-.682L84.878 8.16l-3.623 13.106zm-15.402-2.482L68.945 6.239l15.221 1.819zm-5.639-6.154l-6.449-6.08h1.695zm24.504 1.15l-2.729 7.403-4.426-6.118zM84.921 30.232l10.71-4.3.454-1.365zm-8.933 7.821l4.589-16.102 2.326 10.479zm24.099-21.914l-1.128 3.056 4.059-.07z"
+                      />
+                    </g>
+                  </svg>
+                </li>
+                <!-- Nagad -->
+                <li>
+                  <svg
+                    class="bg-white rounded-[3px] border border-gray-200"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    width="38"
+                    xml:space="preserve"
+                    y="0"
+                    x="0"
+                    id="Layer_1"
+                    version="1.1"
+                    viewBox="-45 -32.75825 390 196.5495"
+                  >
+                    <style id="style1431" type="text/css">
+                      .st0 {
+                        fill: #eb2329;
+                      }
+                      .st1 {
+                        fill: #f89621;
+                      }
+                    </style>
+                    <style type="text/css" id="style1431-6">
+                      .st0 {
+                        fill: #eb2329;
+                      }
+                      .st1 {
+                        fill: #f89621;
+                      }
+                    </style>
+                    <style type="text/css" id="style1384">
+                      .st0 {
+                        fill: #ed1c24;
+                      }
+                      .st1 {
+                        fill: #f7941d;
+                      }
+                    </style>
+                    <g
+                      transform="translate(-1266.194 -110.295) scale(2.59472)"
+                      id="g1438"
+                    >
+                      <g id="g1406" transform="translate(481.988 41.407)">
+                        <g id="g1390">
+                          <path
+                            id="path1386"
+                            d="M80.6 20.7H60.4c-.4 0-.6.3-.6.6v1.6c0 .4.3.6.6.6h15.1v8.4c-.4-.6-.9-1.2-1.4-1.8-1.8-1.8-3.7-2.7-5.7-2.7-1.6 0-2.9.8-4 2.2-.9 1.2-1.4 2.6-1.4 3.9 0 1.3.2 3 1.2 4.6 1.2 1.9 3.2 2.5 5 2.5 2.3 0 4.2-1.6 4.2-3.7 0-1.2-.6-2.2-1.7-2.9l-1.1-.6v1.8c-.1.5-.9 1.2-1.8 1.2-.8 0-1.5-.3-2-.8-.3-.3-.5-.9-.4-1.3 0-.6.2-1.1.6-1.6.5-.6 1-.9 1.8-.9 2 0 3.7.9 5.1 2.9 1.1 1.7 1.7 3.3 1.7 5.1V44l3 1.8c.1.1.2.1.3.1.4 0 .6-.3.6-.6V23.6h1.2c.4 0 .6-.3.6-.6v-1.6c0-.4-.3-.7-.7-.7z"
+                            class="st0"
+                            fill="#ed1c24"
+                          />
+                          <path
+                            id="path1388"
+                            d="M121 20.7H95.4c-.4 0-.6.3-.6.6v2.8c-2.5-2.6-4.7-3.9-6.7-3.9-1.9 0-3.5.4-4.9 1.5-1.3 1-2.1 2.3-2.1 3.8 0 4.5 5 4.4 6.3 3.8.2-.1.5-.3.8-.3 1 0 1.4.8 1.4 1.5 0 1-1.5 1.9-3.3 1.9-1 0-1.6-.3-2-.9l-.8-1.2-.5 1.4c-.1.3-.3.7-.3 1.2 0 1 .5 2 1.5 2.9.9.8 2 1.2 3.2 1.2 1.9 0 3.5-.7 4.5-2.1.9-1.1 1.3-2.4 1.3-3.9 0-.8-.3-1.7-1-2.7-.8-1.2-1.8-1.8-2.9-1.8-.4 0-.9.1-1.4.3-.2.1-.6.2-.7.2-.2 0-.5-.1-.7-.4-.2-.2-.4-.5-.4-1 0-1.1 1-2.2 2.8-2.2h.1c1.2 0 2.4.6 3.5 1.7.9.9 1.6 1.8 2.2 2.8v15.9l3 1.8c.1.1.2.1.3.1.4 0 .6-.3.6-.6V23.6h4.6v13.9l3.6 1.5h.2c.3 0 .6-.2.6-.6v-.1c.6-4.1 2.4-6.9 5.4-8.6v.8c0 .6 0 2.1.1 2.9 0 .5 0 .8.1 1.1 0 1.6.2 4 .7 5.8 1 3.4 2.7 4.2 3.9 4.2h.1c.7 0 1.3-.2 1.7-.6.2-.2.5-.6.5-1.3 0-.6-.1-1.1-.3-1.5l-.3-.5-.6.1c-.6.2-.9.2-.9.1h-.1c-.2 0-.2 0-.3-.1-.2-.1-.6-.4-.9-1.5-.2-.8-.3-1.9-.3-2.5 0-4.5.9-7.9 2.4-8.6h.1c.2-.1.4-.3.4-.6 0-.1 0-.2-.1-.3v-.1c-.7-1.4-2.2-2.4-4.2-2.9h-.4c-1.6.3-3.5 1.4-5.9 3.4-.6.5-1.2 1-1.7 1.5v-5.5h14c.4 0 .6-.3.6-.6v-1.6c.1-.4-.2-.7-.6-.7z"
+                            class="st0"
+                            fill="#ed1c24"
+                          />
+                        </g>
+                        <path
+                          id="path1392"
+                          d="M53.2 28.1c0 .7 0 1.3-.1 1.9-.2 2.8-.9 5.4-2 7.8-.4 1-.9 1.9-1.5 2.8-4.2 6.6-11.6 11-20 11-3.6 0-7-.8-10-2.2C11.6 45.7 6 37.5 6 28.1 6 18.8 11.4 10.8 19.1 7c-.6.8-1.2 1.6-1.7 2.5 0 .1-.1.1-.1.2-.3.3-.6.5-.9.8-.4.3-.7.7-1.1 1l-.2.2-.2.2c-.1.1-.2.3-.4.4-.2.3-.5.6-.7.9-1 1.3-1.8 2.7-2.4 4.2-.1.1-.1.3-.2.4-.1.2-.1.4-.2.5 0 .1-.1.2-.1.3-.1.3-.2.5-.3.8-.1.2-.1.4-.2.5 0 .1-.1.2-.1.3 0 .2-.1.4-.1.6l-.3 1.8c0 .2 0 .3-.1.5v2.4c0 6.4 2.9 12.2 7.6 15.9 3.6 2.9 8.1 4.7 13 4.7 4.5 0 8.6-1.4 12-3.9 2.5-1.8 4.5-4.1 6-6.8.2-.4.4-.7.6-1.1 1.2-2.5 1.9-5.2 1.9-8.1v-.7c0-.7 0-1.3-.1-2l.1.1c.3.3.6.5.9.8.3-.5.6-.9.9-1.4.2.9.3 1.8.4 2.8.1.9.1 1.6.1 2.3z"
+                          class="st0"
+                          fill="#ed1c24"
+                        />
+                        <path
+                          id="path1394"
+                          d="M32.4 9.2L28 1.1c-7.3 3.3-12.3 10.6-12.3 19.1 0 4.3 1.3 8.3 3.5 11.6-.2-1.1-.2-2.2-.2-3.4.1-8.7 5.6-16.1 13.4-19.2z"
+                          class="st1"
+                          fill="#f7941d"
+                        />
+                        <path
+                          id="path1396"
+                          d="M35.9 13.2c1.8-.5 3.8-.7 5.7-.7 1.2 0 2.5.1 3.6.3l-.1-3.6-.2-7.2c-.8-.1-1.7-.2-2.6-.2-4 0-7.7 1.3-10.7 3.4L34 9.6c-4.3 1.5-7.8 4.5-10 8.4-1.1 1.9-1.9 4.1-2.2 6.4.6-1.2 1.3-2.3 2.1-3.3 2.9-3.8 7.1-6.7 12-7.9z"
+                          class="st0"
+                          fill="#ed1c24"
+                        />
+                        <path
+                          id="path1398"
+                          d="M46.4 9.1l.2 5.1c-1.7-.5-3.4-.8-5.3-.8-3.5 0-6.8 1-9.7 2.7-3.6 2.2-6.4 5.7-7.8 9.8 1.4-1.9 3.1-3.6 5.1-4.9 2.9-1.9 6.4-3 10.1-3 2.8 0 5.4.6 7.8 1.7 1.8.8 3.4 1.9 4.8 3.3l2.8-4.2 3.6-5.5c-3.2-2.6-7.2-4.2-11.6-4.2z"
+                          class="st1"
+                          fill="#f7941d"
+                        />
+                        <path
+                          id="path1400"
+                          d="M50.9 25.7v.7c0 4.2-1.7 7.7-1.9 8.1-.2.4-.4.7-.6 1.1-1.5 2.7-3.5 5-6 6.8-3.4 2.4-7.5 3.9-12 3.9-4.9 0-9.5-1.7-13-4.7-4.6-3.8-7.6-9.5-7.6-15.9v-2.4c0-.2 0-.3.1-.5l.3-1.8c0-.2.1-.4.1-.6 0-.1.1-.2.1-.3.1-.2.1-.4.2-.5.1-.3.2-.6.3-.8 0-.1.1-.2.1-.3.1-.2.1-.4.2-.5.1-.1.1-.3.2-.4.6-1.5 1.5-2.9 2.4-4.2.2-.3.5-.6.7-.9.1-.1.2-.3.4-.4.1-.1.1-.2.2-.2.1-.1.1-.2.2-.2.3-.4.7-.7 1.1-1 .3-.3.6-.5.9-.8 0 .1-.1.1-.1.2s-.1.2-.1.2c-1.2 2.4-2 5.3-2.3 8.3-.1.8-.1 1.6-.1 2.5 0 10.8 6.3 19.5 14.1 19.5h.8c1.1 0 2.2-.2 3.3-.4 5.3-1.4 9.2-6.3 9.2-12v-.3c-.1-3.4-1.5-6.5-3.8-8.6 1.6 0 3.2.3 4.7.7 2.9.7 5.5 2.1 7.8 3.9l.1.1c-.1.4 0 1.1 0 1.7z"
+                          class="st1"
+                          fill="#f7941d"
+                        />
+                        <g id="g1404">
+                          <path
+                            id="path1402"
+                            d="M50.9 25.7v.7c0 4.4-2 8.2-2 8.2-.2.4-.4.7-.6 1.1-1.5 2.7-3.6 5-6.1 6.8-3.5 2.6-7.7 3.9-12.1 3.9-4.8 0-9.4-1.7-13.1-4.7-4.8-3.9-7.6-9.8-7.6-16 0-6.2 2.8-12.1 7.6-16l.2-.2c0 .1-.1.1-.1.2s-.1.1-.1.2c-4.7 3.9-7.4 9.6-7.4 15.8 0 6.2 2.7 11.9 7.5 15.9 3.6 3 8.3 4.6 13 4.6 4.3 0 8.5-1.3 12-3.9 2.5-1.8 4.5-4.1 6-6.8.2-.4.4-.7.5-1.1 0 0 2-3.7 2-8.1v-.7c0-.7 0-1.3-.1-2v-.1l.1.1.1.1c.2.8.2 1.4.2 2z"
+                            class="st1"
+                            fill="#f7941d"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </li>
+                <!-- visa -->
+                <li>
+                  <svg
+                    viewBox="0 0 38 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    width="38"
+                    height="24"
+                    aria-labelledby="pi-visa"
+                  >
+                    <title id="pi-visa">Visa</title>
+                    <path
+                      opacity=".07"
+                      d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"
+                    ></path>
+                    <path
+                      fill="#fff"
+                      d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"
+                    ></path>
+                    <path
+                      d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z"
+                      fill="#142688"
+                    ></path>
+                  </svg>
+                </li>
+                <!-- Mastercard -->
+                <li>
+                  <svg
+                    viewBox="0 0 38 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    width="38"
+                    height="24"
+                    aria-labelledby="pi-master"
+                  >
+                    <title id="pi-master">Mastercard</title>
+                    <path
+                      opacity=".07"
+                      d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"
+                    ></path>
+                    <path
+                      fill="#fff"
+                      d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"
+                    ></path>
+                    <circle fill="#EB001B" cx="15" cy="12" r="7"></circle>
+                    <circle fill="#F79E1B" cx="23" cy="12" r="7"></circle>
+                    <path
+                      fill="#FF5F00"
+                      d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"
+                    ></path>
+                  </svg>
+                </li>
+                <!-- American Express -->
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-labelledby="pi-american_express"
+                    viewBox="0 0 38 24"
+                    width="38"
+                    height="24"
+                  >
+                    <title id="pi-american_express">American Express</title>
+                    <path
+                      fill="#000"
+                      d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3Z"
+                      opacity=".07"
+                    ></path>
+                    <path
+                      fill="#006FCF"
+                      d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32Z"
+                    ></path>
+                    <path
+                      fill="#FFF"
+                      d="M22.012 19.936v-8.421L37 11.528v2.326l-1.732 1.852L37 17.573v2.375h-2.766l-1.47-1.622-1.46 1.628-9.292-.02Z"
+                    ></path>
+                    <path
+                      fill="#006FCF"
+                      d="M23.013 19.012v-6.57h5.572v1.513h-3.768v1.028h3.678v1.488h-3.678v1.01h3.768v1.531h-5.572Z"
+                    ></path>
+                    <path
+                      fill="#006FCF"
+                      d="m28.557 19.012 3.083-3.289-3.083-3.282h2.386l1.884 2.083 1.89-2.082H37v.051l-3.017 3.23L37 18.92v.093h-2.307l-1.917-2.103-1.898 2.104h-2.321Z"
+                    ></path>
+                    <path
+                      fill="#FFF"
+                      d="M22.71 4.04h3.614l1.269 2.881V4.04h4.46l.77 2.159.771-2.159H37v8.421H19l3.71-8.421Z"
+                    ></path>
+                    <path
+                      fill="#006FCF"
+                      d="m23.395 4.955-2.916 6.566h2l.55-1.315h2.98l.55 1.315h2.05l-2.904-6.566h-2.31Zm.25 3.777.875-2.09.873 2.09h-1.748Z"
+                    ></path>
+                    <path
+                      fill="#006FCF"
+                      d="M28.581 11.52V4.953l2.811.01L32.84 9l1.456-4.046H37v6.565l-1.74.016v-4.51l-1.644 4.494h-1.59L30.35 7.01v4.51h-1.768Z"
+                    ></path>
+                  </svg>
+                </li>
+                <!-- PayPal -->
+                <li>
+                  <svg
+                    viewBox="0 0 38 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="38"
+                    height="24"
+                    role="img"
+                    aria-labelledby="pi-paypal"
+                  >
+                    <title id="pi-paypal">PayPal</title>
+                    <path
+                      opacity=".07"
+                      d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"
+                    ></path>
+                    <path
+                      fill="#fff"
+                      d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"
+                    ></path>
+                    <path
+                      fill="#003087"
+                      d="M23.9 8.3c.2-1 0-1.7-.6-2.3-.6-.7-1.7-1-3.1-1h-4.1c-.3 0-.5.2-.6.5L14 15.6c0 .2.1.4.3.4H17l.4-3.4 1.8-2.2 4.7-2.1z"
+                    ></path>
+                    <path
+                      fill="#3086C8"
+                      d="M23.9 8.3l-.2.2c-.5 2.8-2.2 3.8-4.6 3.8H18c-.3 0-.5.2-.6.5l-.6 3.9-.2 1c0 .2.1.4.3.4H19c.3 0 .5-.2.5-.4v-.1l.4-2.4v-.1c0-.2.3-.4.5-.4h.3c2.1 0 3.7-.8 4.1-3.2.2-1 .1-1.8-.4-2.4-.1-.5-.3-.7-.5-.8z"
+                    ></path>
+                    <path
+                      fill="#012169"
+                      d="M23.3 8.1c-.1-.1-.2-.1-.3-.1-.1 0-.2 0-.3-.1-.3-.1-.7-.1-1.1-.1h-3c-.1 0-.2 0-.2.1-.2.1-.3.2-.3.4l-.7 4.4v.1c0-.3.3-.5.6-.5h1.3c2.5 0 4.1-1 4.6-3.8v-.2c-.1-.1-.3-.2-.5-.2h-.1z"
+                    ></path>
+                  </svg>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <!-- alart message for panding task -->
+    <div
+      id="customAlert"
+      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 hidden"
+    >
+      <div class="bg-white rounded-xl shadow-lg p-8 max-w-xs text-center">
+        <h2 class="text-lg font-bold mb-2">
+          We are working on this section <br />Thank you for visiting
+        </h2>
+        <p id="alertMessage" class="mb-4"></p>
+        <button
+          onclick="closeCustomAlert()"
+          class="px-4 py-2 bg-[#fa2d37] text-white rounded hover:bg-[#e0222e]"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </body>
+  <script src="productPage.js"></script>
+</html>

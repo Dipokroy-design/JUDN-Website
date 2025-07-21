@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="output.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="img/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/favicon-16x16.png"
+    />
+    <link rel="manifest" href="img/site.webmanifest" />
+    <title>Product Details</title>
+  </head>
+  <body class="bg-[#f7f7f7] min-h-screen font-sans">
+    <!-- Navbar -->
+    <nav
+      class="w-full px-5 lg:px-8 py-4 lg:py-6 flex items-center justify-between fixed"
+    >
+      <h1 class="text-xl lg:text-3xl font-bold tracking-wide text-[#fa2d37]">
+        JUDN
+      </h1>
+      <div class="flex items-center gap-6">
+        <input
+          type="text"
+          placeholder="Search..."
+          class="hidden lg:flex px-4 py-2 border rounded-lg text-gray-700 bg-white shadow focus:outline-none"
+        />
+        <a href="cart.html" class="relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="size-6 text-red-500"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+
+          <span
+            id="cartCount"
+            class="absolute -top-3 -right-3 bg-[#fa2d37] text-white text-xs rounded-full px-2 py-1"
+            >0</span
+          >
+        </a>
+        <button
+          class="hidden lg:flex px-5 py-2 bg-[#fa2d37] text-white rounded-lg font-bold shadow hover:bg-[#e0222e] transition"
+        >
+          Profile
+        </button>
+      </div>
+    </nav>
+
+    <!-- Product Details -->
+    <main class="max-w-5xl mx-auto px-4 py-10 flex flex-col md:flex-row gap-10">
+      <div class="flex-1 flex items-center justify-center">
+        <img
+          id="productImage"
+          src=""
+          alt=""
+          class="w-[250px] max-w-md h-auto rounded-2xl shadow-lg object-cover"
+        />
+      </div>
+      <div class="flex-1 flex flex-col gap-6">
+        <span
+          id="productTag"
+          class="bg-[#fa2d37] text-white text-xs font-bold px-3 py-1 rounded-full shadow w-max"
+        ></span>
+        <h2 id="productName" class="text-3xl font-bold text-gray-900"></h2>
+        <span
+          id="productPrice"
+          class="text-2xl font-bold text-[#fa2d37]"
+        ></span>
+        <p id="productDesc" class="text-base text-gray-600"></p>
+        <div class="flex items-center gap-4 mt-4">
+          <label for="quantity" class="text-gray-700 font-semibold"
+            >Quantity:</label
+          >
+          <input
+            id="quantity"
+            type="number"
+            min="1"
+            value="1"
+            class="w-16 px-2 py-1 border rounded-lg text-center"
+          />
+        </div>
+        <button
+          id="addToCartBtn"
+          class="mt-6 px-6 py-3 bg-[#fa2d37] text-white rounded-xl font-bold text-lg shadow hover:bg-[#e0222e] transition"
+        >
+          Add to Cart
+        </button>
+      </div>
+    </main>
+
+    <!-- Related Products -->
+    <section class="max-w-5xl mx-auto px-4 py-10">
+      <h3 class="text-xl font-bold text-gray-900 mb-6">Related Products</h3>
+      <div
+        id="relatedProducts"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        <!-- Related product cards will be rendered here -->
+      </div>
+    </section>
+    <!-- modals -->
+    <!-- alart message for panding task -->
+    <div
+      id="customAlert"
+      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 hidden"
+    >
+      <div class="bg-white rounded-xl shadow-lg p-8 max-w-xs text-center">
+        <h2 class="text-lg font-bold mb-2">
+          We are working on this section <br />Thank you for visiting
+        </h2>
+        <p id="alertMessage" class="mb-4"></p>
+        <button
+          onclick="closeCustomAlert()"
+          class="px-4 py-2 bg-[#fa2d37] text-white rounded hover:bg-[#e0222e]"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+    <script src="productCard.js"></script>
+  </body>
+</html>
