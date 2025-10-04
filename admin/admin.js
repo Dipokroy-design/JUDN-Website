@@ -19,7 +19,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
 
 // Configuration
-const MERCHANT_PHONE = '+8801234567890'; // TODO: Replace with your actual phone number
+const MERCHANT_PHONE = '+8801884903850'; // TODO: Replace with your actual phone number
 
 // DOM elements
 const loginOverlay = document.getElementById('loginOverlay');
