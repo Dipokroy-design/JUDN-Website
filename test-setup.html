@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUDN Firebase Setup Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            background: #f9fafb;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ef4444;
+        }
+        .success { border-left-color: #10b981; }
+        .error { border-left-color: #dc2626; }
+        .warning { border-left-color: #f59e0b; }
+        .code {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        button {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #dc2626;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .status.success { background: #d1fae5; color: #065f46; }
+        .status.error { background: #fee2e2; color: #991b1b; }
+        .status.warning { background: #fef3c7; color: #92400e; }
+    </style>
+</head>
+<body>
+    <h1>JUDN Firebase Setup Test</h1>
+    <p>This page helps you verify that your Firebase setup is working correctly.</p>
+
+    <div class="test-section">
+        <h2>1. Firebase Configuration Test</h2>
+        <p>Check if Firebase is properly initialized:</p>
+        <button onclick="testFirebaseConfig()">Test Firebase Config</button>
+        <div id="firebaseStatus" class="status"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Firestore Connection Test</h2>
+        <p>Test if you can connect to Firestore:</p>
+        <button onclick="testFirestore()">Test Firestore</button>
+        <div id="firestoreStatus" class="status"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Authentication Test</h2>
+        <p>Test Firebase Authentication:</p>
+        <button onclick="testAuth()">Test Auth</button>
+        <div id="authStatus" class="status"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Order Creation Test</h2>
+        <p>Test if you can create orders (requires valid Firebase config):</p>
+        <button onclick="testOrderCreation()">Test Order Creation</button>
+        <div id="orderStatus" class="status"></div>
+    </div>
+
+    <div class="test-section warning">
+        <h2>⚠️ Setup Checklist</h2>
+        <ul>
+            <li>✅ Firebase project created</li>
+            <li>✅ Firestore database enabled</li>
+            <li>✅ Authentication enabled (GitHub + Email)</li>
+            <li>✅ Firebase config copied to <code>common/firebase-init.js</code></li>
+            <li>✅ Merchant phone number updated in <code>checkout.js</code> and <code>admin/admin.js</code></li>
+            <li>✅ Firestore rules deployed</li>
+            <li>✅ Admin user created in Firestore</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 Configuration Files</h2>
+        <p>Make sure these files are properly configured:</p>
+        <div class="code">
+common/firebase-init.js - Firebase configuration
+checkout.js - Merchant phone number
+admin/admin.js - Merchant phone number
+firestore.rules - Database security rules
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📱 Test URLs</h2>
+        <p>Test these pages after setup:</p>
+        <ul>
+            <li><a href="index.html" target="_blank">Main Product Page</a></li>
+            <li><a href="cart.html" target="_blank">Shopping Cart</a></li>
+            <li><a href="checkout.html" target="_blank">Checkout Page</a></li>
+            <li><a href="admin/index.html" target="_blank">Admin Panel</a></li>
+        </ul>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script type="module" src="common/firebase-init.js"></script>
+    <script type="module">
+        import { auth, db } from './common/firebase-init.js';
+        import { collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+
+        // Make functions available globally
+        window.testFirebaseConfig = function() {
+            const status = document.getElementById('firebaseStatus');
+            try {
+                if (auth && db) {
+                    status.className = 'status success';
+                    status.textContent = '✅ Firebase is properly initialized!';
+                } else {
+                    status.className = 'status error';
+                    status.textContent = '❌ Firebase failed to initialize. Check your config.';
+                }
+            } catch (error) {
+                status.className = 'status error';
+                status.textContent = `❌ Error: ${error.message}`;
+            }
+        };
+
+        window.testFirestore = function() {
+            const status = document.getElementById('firestoreStatus');
+            status.className = 'status warning';
+            status.textContent = '⏳ Testing Firestore connection...';
+            
+            // Try to read from a test collection
+            const testQuery = collection(db, 'test');
+            if (testQuery) {
+                status.className = 'status success';
+                status.textContent = '✅ Firestore connection successful!';
+            } else {
+                status.className = 'status error';
+                status.textContent = '❌ Firestore connection failed.';
+            }
+        };
+
+        window.testAuth = function() {
+            const status = document.getElementById('authStatus');
+            try {
+                if (auth) {
+                    status.className = 'status success';
+                    status.textContent = '✅ Firebase Auth is available!';
+                } else {
+                    status.className = 'status error';
+                    status.textContent = '❌ Firebase Auth failed to initialize.';
+                }
+            } catch (error) {
+                status.className = 'status error';
+                status.textContent = `❌ Error: ${error.message}`;
+            }
+        };
+
+        window.testOrderCreation = function() {
+            const status = document.getElementById('orderStatus');
+            status.className = 'status warning';
+            status.textContent = '⏳ Testing order creation...';
+            
+            // Try to create a test order
+            const testOrder = {
+                customer: {
+                    name: 'Test Customer',
+                    phone: '+8801234567890',
+                    email: 'test@example.com',
+                    address: 'Test Address'
+                },
+                items: [{
+                    name: 'Test Product',
+                    price: 100,
+                    quantity: 1
+                }],
+                total: 100,
+                status: 'pending',
+                createdAt: serverTimestamp(),
+                orderId: 'TEST-' + Date.now()
+            };
+
+            addDoc(collection(db, 'orders'), testOrder)
+                .then(() => {
+                    status.className = 'status success';
+                    status.textContent = '✅ Test order created successfully! Check your Firestore database.';
+                })
+                .catch((error) => {
+                    status.className = 'status error';
+                    status.textContent = `❌ Order creation failed: ${error.message}`;
+                });
+        };
+    </script>
+</body>
+</html>
+

@@ -1,18 +1,47 @@
 {
   "name": "judn-website",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "tailwindcss -i ./style.css -o ./output.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "ecommerce",
+    "fashion",
+    "clothing",
+    "judn",
+    "admin-panel"
+  ],
+  "author": "JUDN Team",
   "license": "ISC",
-  "description": "",
+  "description": "JUDN - Premium clothing brand e-commerce website with admin panel",
   "devDependencies": {
+    "nodemon": "^3.0.2",
     "tailwindcss": "^4.1.10"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.10"
+    "@tailwindcss/cli": "^4.1.10",
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^5.1.0",
+    "cors": "^2.8.5",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "express-session": "^1.17.3",
+    "express-validator": "^7.0.1",
+    "firebase": "^12.1.0",
+    "firebase-admin": "^13.4.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.29.4",
+    "mongoose": "^8.0.3",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.7",
+    "stripe": "^14.7.0",
+    "uuid": "^9.0.1"
   }
 }

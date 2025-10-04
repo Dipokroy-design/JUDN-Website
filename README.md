@@ -1,515 +1,259 @@
-```html
-<body>
-  <div class="banner">
-    <div class="slider" style="--quantity: 10">
-      <div class="item" style="--position: 1">
-        <img src="https://via.placeholder.com/200x250" alt="" />
-      </div>
-      <div class="item" style="--position: 2">
-        <img src="https://via.placeholder.com/200x250" alt="" />
-      </div>
-      <div class="item" style="--position: 3">
-        <img src="https://via.placeholder.com/200x250" alt="" />
-      </div>
-      <div class="item" style="--position: 4">
-        <img src="https://via.placeholder.com/200x250" alt="" />
-      </div>
-      <div class="item" style="--position: 5">
-        <img src="https://via.placeholder.com/200x250" alt="" />
-      </div>
-      <div class="item" style="--position: 6">
-        <img src="https://via.placeholder.com/200x250" alt="" />
-      </div>
-      <div class="item" style="--position: 7">
-        <img src="https://via.placeholder.com/200x250" alt="" />
-      </div>
-      <div class="item" style="--position: 8">
-        <img src="https://via.placeholder.com/200x250" alt="" />
-      </div>
-      <div class="item" style="--position: 9">
-        <img src="https://via.placeholder.com/200x250" alt="" />
-      </div>
-      <div class="item" style="--position: 10">
-        <img src="https://via.placeholder.com/200x250" alt="" />
-      </div>
-    </div>
-  </div>
-</body>
+# JUDN Website - Firebase-Powered E-commerce Platform
+
+A modern, responsive e-commerce website built with vanilla JavaScript, Firebase, and Tailwind CSS. Features include product catalog, shopping cart, checkout system, and admin panel with real-time order management.
+
+## 🚀 Features
+
+- **Product Catalog**: Browse and search products with responsive design
+- **Shopping Cart**: Add/remove items with localStorage persistence
+- **Checkout System**: Customer information collection and order submission
+- **Firebase Integration**: Real-time database with Firestore
+- **Admin Panel**: Secure admin interface with Firebase Authentication
+- **Order Management**: Real-time order tracking and status updates
+- **WhatsApp Integration**: Direct customer communication via WhatsApp
+- **CSV Export**: Export orders data for analysis
+- **Mobile-First Design**: Responsive design optimized for all devices
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Vanilla JavaScript (ES6+), HTML5, CSS3
+- **Styling**: Tailwind CSS
+- **Backend**: Firebase (Firestore, Authentication)
+- **Deployment**: GitHub Pages
+- **Authentication**: GitHub OAuth + Email/Password
+- **Database**: Cloud Firestore
+
+## 📋 Prerequisites
+
+- Node.js (v14 or higher)
+- Firebase account
+- GitHub account
+- Modern web browser
+
+## 🔧 Setup Instructions
+
+### 1. Firebase Project Setup
+
+1. **Create Firebase Project**:
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Click "Create a project" or "Add project"
+   - Enter project name (e.g., "judn-website")
+   - Choose whether to enable Google Analytics (optional)
+   - Click "Create project"
+
+2. **Enable Services**:
+   - **Firestore Database**: Click "Create database" → Start in test mode
+   - **Authentication**: Click "Get started" → Enable GitHub provider and Email/Password
+
+3. **Configure GitHub OAuth**:
+   - In Authentication → Sign-in method → GitHub
+   - Click "Enable" and add your GitHub OAuth app credentials
+   - For GitHub OAuth app setup, see [GitHub OAuth Guide](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
+
+4. **Get Firebase Config**:
+   - Go to Project Settings → General → Your apps
+   - Click "Add app" → Web app
+   - Register app and copy the `firebaseConfig` object
+
+### 2. Project Configuration
+
+1. **Update Firebase Config**:
+   ```bash
+   # Edit common/firebase-init.js
+   # Replace the placeholder firebaseConfig with your actual config
+   ```
+
+2. **Set Merchant Phone Number**:
+   ```bash
+   # Edit checkout.js and admin/admin.js
+   # Replace MERCHANT_PHONE with your actual phone number
+   const MERCHANT_PHONE = '+8801234567890'; // Your actual number
+   ```
+
+3. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+4. **Build CSS**:
+   ```bash
+   npm run build
+   ```
+
+### 3. Admin Setup
+
+1. **Create Admin Users**:
+   - Sign in to your admin panel using GitHub or email
+   - Note your UID from Firebase Authentication
+   - In Firestore, create a collection called `admins`
+   - Add a document with your UID as the document ID
+   - Set the document content to: `{ role: "admin", createdAt: serverTimestamp() }`
+
+2. **Admin Access Control**:
+   - Only users with documents in the `admins` collection can access the admin panel
+   - This provides an additional security layer beyond Firebase Auth
+
+### 4. Deploy to GitHub Pages
+
+1. **Push to GitHub**:
+   ```bash
+   git add .
+   git commit -m "Initial Firebase integration"
+   git push origin main
+   ```
+
+2. **Enable GitHub Pages**:
+   - Go to your repository → Settings → Pages
+   - Source: Deploy from a branch
+   - Branch: main
+   - Folder: / (root)
+   - Click "Save"
+
+3. **Update Firebase Hosting** (Optional):
+   ```bash
+   npm install -g firebase-tools
+   firebase login
+   firebase init hosting
+   firebase deploy
+   ```
+
+## 🔒 Security Features
+
+- **Firestore Rules**: Secure database access with role-based permissions
+- **Admin Authentication**: GitHub OAuth + Email/Password with admin verification
+- **Input Validation**: Client and server-side validation for all forms
+- **CORS Protection**: Configured for secure cross-origin requests
+- **Rate Limiting**: Built-in protection against abuse
+
+## 📱 Usage
+
+### Customer Flow
+1. Browse products on the main page
+2. Add items to cart
+3. Proceed to checkout
+4. Fill customer information
+5. Submit order (saved to Firestore)
+6. Receive order confirmation with WhatsApp contact option
+
+### Admin Flow
+1. Sign in with GitHub or email
+2. View real-time orders dashboard
+3. Update order statuses
+4. Export orders to CSV
+5. Contact customers via WhatsApp
+6. Manage products and campaigns
+
+## 🗂️ Project Structure
+
+```
+JUDN-Website/
+├── common/
+│   └── firebase-init.js      # Firebase configuration
+├── admin/
+│   ├── index.html            # Admin panel interface
+│   ├── admin.js              # Admin functionality
+│   ├── login.html            # Login page
+│   └── login.js              # Login logic
+├── assets/
+│   ├── styles.css            # Additional CSS styles
+│   └── ...                   # Images and assets
+├── scripts/
+│   └── utils.js              # Utility functions
+├── checkout.html              # Checkout page
+├── checkout.js                # Checkout logic
+├── firestore.rules            # Database security rules
+├── index.html                 # Main product page
+├── cart.html                  # Shopping cart page
+└── README.md                  # This file
 ```
 
-```css
-.banner {
-  width: 100%;
-  height: 100vh;
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-}
+## 🔧 Configuration Files
 
-.banner .slider {
-  position: absolute;
-  width: 200px;
-  height: 250px;
-  top: 10%;
-  left: calc(50% - 100px);
-  transform-style: preserve-3d;
-  transform: perspective(1000px);
-  animation: autoRun 20s linear infinite;
-}
+### Firebase Config (`common/firebase-init.js`)
+```javascript
+const firebaseConfig = {
+  apiKey: "your-api-key",
+  authDomain: "your-project.firebaseapp.com",
+  projectId: "your-project-id",
+  storageBucket: "your-project.appspot.com",
+  messagingSenderId: "your-sender-id",
+  appId: "your-app-id"
+};
+```
 
-@keyframes autoRun {
-  from {
-    transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
-  }
-  to {
-    transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
-  }
-}
+### Firestore Rules (`firestore.rules`)
+- Secure access control for all collections
+- Admin-only access for sensitive operations
+- Anonymous order creation with validation
 
-.banner .slider .item {
-  position: absolute;
-  inset: 0;
-  transform: rotateY(calc((var(--position) - 1) * (360deg / var(--quantity)))) translateZ(
-      550px
-    );
-}
+## 🚨 Important Notes
 
-.banner .slider .item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+- **Never commit API keys** to version control
+- **Update merchant phone number** in checkout.js and admin.js
+- **Set up admin users** in Firestore before accessing admin panel
+- **Test thoroughly** in development before production deployment
+- **Monitor Firebase usage** to stay within free tier limits
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Firebase not initialized**:
+   - Check browser console for errors
+   - Verify firebaseConfig in firebase-init.js
+   - Ensure Firebase services are enabled
+
+2. **Admin access denied**:
+   - Verify admin document exists in Firestore
+   - Check Firebase Authentication status
+   - Ensure GitHub OAuth is properly configured
+
+3. **Orders not saving**:
+   - Check Firestore rules
+   - Verify database permissions
+   - Check browser console for errors
+
+4. **WhatsApp links not working**:
+   - Verify merchant phone number format
+   - Ensure phone number includes country code
+
+### Debug Mode
+
+Enable debug logging in Firebase:
+```javascript
+// Add to firebase-init.js
+if (location.hostname === 'localhost') {
+  console.log('Firebase debug mode enabled');
 }
 ```
 
-Font fmaily - Bungee Inline , Fredericka the Great , Karantina
+## 📞 Support
 
-<!-- Text Animation -->
+For issues and questions:
+1. Check the troubleshooting section above
+2. Review Firebase documentation
+3. Check browser console for error messages
+4. Verify all configuration steps are completed
 
-```html
-<div class="banner">
-  <div class="title">
-    <svg
-      width="360"
-      height="360"
-      viewBox="0 0 15 10"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M3 7.932C3 8.268 2.896 8.54 2.688 8.748C2.48 8.948 2.208 9.048 1.872 9.048H1.368C1.032 9.048 0.76 8.948 0.552 8.748C0.344 8.54 0.24 8.268 0.24 7.932V5.424H1.38V7.872C1.38 7.912 1.4 7.932 1.44 7.932H1.8C1.84 7.932 1.86 7.912 1.86 7.872V1.716H1.38L1.476 0.599999H3V7.932ZM6.53438 7.932C6.53438 8.268 6.43038 8.54 6.22238 8.748C6.01438 8.948 5.74238 9.048 5.40638 9.048H4.66238C4.32638 9.048 4.05438 8.948 3.84638 8.748C3.63838 8.54 3.53438 8.268 3.53438 7.932V1.716H3.35438L3.47438 0.599999H4.67438V7.872C4.67438 7.912 4.69438 7.932 4.73438 7.932H5.33438C5.37438 7.932 5.39438 7.912 5.39438 7.872V0.624H6.53438V7.932ZM10.192 7.884C10.192 8.22 10.088 8.492 9.88003 8.7C9.67203 8.9 9.40003 9 9.06403 9H7.07203V1.716H6.89203L7.01203 0.599999H9.06403C9.40003 0.599999 9.67203 0.704 9.88003 0.912C10.088 1.112 10.192 1.38 10.192 1.716V7.884ZM8.99203 1.716H8.21203V7.884H8.99203C9.03203 7.884 9.05203 7.864 9.05203 7.824V1.776C9.05203 1.736 9.03203 1.716 8.99203 1.716ZM13.2483 0.599999H14.3883V9H13.2483L11.9283 3.864V9H10.7883V1.716H10.6083L10.7283 0.599999H11.9883L13.3203 5.94L13.2483 0.599999Z"
-        fill="white"
-      />
-    </svg>
-  </div>
-</div>
-```
+## 📄 License
 
-```css
-svg path {
-  fill: transparent;
-  stroke: #fff;
-  stroke-width: 0.1;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: textAnimation 4s ease-in-out 1 forwards;
-}
+This project is licensed under the ISC License - see the LICENSE file for details.
 
-@keyframes textAnimation {
-  0% {
-    stroke-dashoffset: 1000;
-  }
-  80% {
-    fill: transparent;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    fill: #fff;
-  }
-}
-```
+## 🤝 Contributing
 
-<!-- autoShowAnimation -->
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
-```css
-.autoShow {
-  animation: autoShowAnimation both;
-  animation-timeline: view(70% 5%);
-}
-@keyframes autoShowAnimation {
-  from {
-    opacity: 0;
-    transform: translateY(200px) scale(0.3);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-```
+## 🔄 Updates
 
-Another Option
+- **v1.0.0**: Initial Firebase integration
+- **v1.1.0**: Admin panel with real-time orders
+- **v1.2.0**: WhatsApp integration and CSV export
+- **v1.3.0**: Enhanced security and validation
 
-```css
-/* Initial state */
-.autoShow {
-  opacity: 0;
-  transform: translateY(100px) scale(0.95);
-  transition: all 0.6s ease-out;
-  will-change: transform, opacity;
-}
+---
 
-/* Animate in when in view */
-.autoShow.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-```
-
-```js
-document.addEventListener("DOMContentLoaded", () => {
-  const elements = document.querySelectorAll(".autoShow");
-
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target); // Animate once
-        }
-      });
-    },
-    {
-      threshold: 0.25,
-    }
-  );
-
-  elements.forEach((el) => observer.observe(el));
-});
-```
-
-<!-- autoBlurAnimation -->
-
-# ✅ autoBlurAnimation Production-Ready (Works Everywhere)
-
-```css
-.autoBlue2 {
-  animation: autoBlurAnimation linear both;
-  animation-timeline: view();
-}
-@keyframes autoBlurAnimation {
-  0% {
-    filter: blur(40px);
-  }
-  45%,
-  55% {
-    filter: blur(0);
-  }
-  100% {
-    filter: blur(40px);
-  }
-}
-```
-
-# ✅ Production-Ready Alternative (Works Everywhere)
-
-```css
-.autoBlue {
-  filter: blur(40px);
-  transition: filter 0.8s ease-in-out;
-}
-
-.autoBlue.inView {
-  filter: blur(0px);
-}
-```
-
-```js
-const blurElements = document.querySelectorAll(".autoBlue");
-
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("inView");
-        // Uncomment to blur again when out of view
-        // observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.3,
-  }
-);
-
-blurElements.forEach((el) => observer.observe(el));
-```
-
-## Favicon design links -
-
-```html
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="manifest" href="/site.webmanifest" />
-```
-
-<!-- deleted code  -->
-
-<!--
-<section
-      class="w-full min-h-screen px-4 py-20 flex flex-col justify-center items-center gap-8 text-center bg-black"
-      aria-labelledby="judn-message-heading"
-    >
-      <p
-        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
-        aria-label="JUDN isn’t just a brand — it’s a movement."
-      >
-        "JUDN isn’t just a brand — it’s a movement."
-      </p>
-
-      <p
-        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
-        aria-label="Made for those who stand out and think differently."
-      >
-        Made for those who stand out and think differently.
-      </p>
-
-      <p
-        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
-        aria-label="Every piece is crafted with purpose,"
-      >
-        Every piece is crafted with purpose,
-      </p>
-
-      <p
-        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
-        aria-label="Built for bold expression."
-      >
-        Built for bold expression.
-      </p>
-
-      <p
-        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
-        aria-label="This is more than fashion."
-      >
-        This is more than fashion.
-      </p>
-
-      <p
-        class="autoBlue2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white max-w-5xl"
-        aria-label="This is JUDN."
-      >
-        This is JUDN."
-      </p>
-    </section>
- -->
-
-<!-- product section -->
-
-```html
-<section class="w-screen mt-10">
-  <div class="main w-full">
-    <!-- text -->
-    <div class="textSection w-full flex flex-col items-center gap-5 h-[150px]">
-      <h1 class="text-4xl font-bold tracking-tight">Our Featured Products</h1>
-      <h5 class="text-[18px] text-[#7d7d7d]">Get the skin you want to feel</h5>
-    </div>
-    <!-- cards -->
-    <div class="featureCards w-full flex justify-center items-center">
-      <div class="cards flex flex-row items-center gap-10">
-        <!-- 1st card -->
-        <div
-          class="card1 w-[300px] h-[450px] flex flex-col bg-white/40 shadow-md rounded-sm"
-        >
-          <div class="image-card rounded-t-sm">
-            <img src="../assets/products/centella.png" class="base-img" />
-            <img src="../assets/products/centella2.jpg" class="hover-img" />
-          </div>
-
-          <div
-            class="text-wraper w-full h-[20%] flex flex-col items-center text-center"
-          >
-            <p
-              class="flex flex-row items-center gap-1 text-green-500 font-bold text-[14px] mt-3"
-            >
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-4 text-green-500"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m8.25 7.5.415-.207a.75.75 0 0 1 1.085.67V10.5m0 0h6m-6 0h-1.5m1.5 0v5.438c0 .354.161.697.473.865a3.751 3.751 0 0 0 5.452-2.553c.083-.409-.263-.75-.68-.75h-.745M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                </svg>
-              </span>
-              2,200
-            </p>
-            <p class="font-semibold tracking-tight text-[14px] text-black mt-2">
-              Centella Tone Brightening <br />
-              Capsule Ampoule - 50ml
-            </p>
-            <button
-              class="bt bg-white/50 px-6 py-2 mt-2 rounded-md font-extrabold border border-black/50 hover:border-black/10 transition-all duration-300"
-            >
-              Buy Now
-            </button>
-          </div>
-        </div>
-        <!-- 2nd card -->
-        <div
-          class="card1 w-[300px] h-[450px] flex flex-col bg-white/40 shadow-md rounded-sm"
-        >
-          <div class="image-card w-full h-[80%] rounded-t-sm">
-            <img
-              src="../assets/products/creamToneBrighteningCapsuleCream.png"
-              class="base-img"
-            />
-            <img
-              src="../assets/products/creamToneBrighteningCapsuleCream2.jpg"
-              class="hover-img"
-            />
-          </div>
-
-          <div
-            class="text-wraper w-full h-[20%] flex flex-col items-center text-center"
-          >
-            <p
-              class="flex flex-row items-center gap-1 text-green-500 font-bold text-[14px] mt-3"
-            >
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-4 text-green-500"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m8.25 7.5.415-.207a.75.75 0 0 1 1.085.67V10.5m0 0h6m-6 0h-1.5m1.5 0v5.438c0 .354.161.697.473.865a3.751 3.751 0 0 0 5.452-2.553c.083-.409-.263-.75-.68-.75h-.745M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                </svg>
-              </span>
-              2,200
-            </p>
-            <p class="font-semibold tracking-tight text-[14px] text-black mt-2">
-              Cream Tone Brightening Capsule Cream
-            </p>
-            <button
-              class="bt bg-white/50 px-6 py-2 mt-5 rounded-md font-extrabold border border-black/50 hover:border-black/10 transition-all duration-300"
-            >
-              Buy Now
-            </button>
-          </div>
-        </div>
-        <!-- 3nd card -->
-        <div
-          class="card1 w-[300px] h-[450px] flex flex-col bg-white/40 shadow-md rounded-sm"
-        >
-          <div class="image-card w-full h-[80%] rounded-t-sm">
-            <img
-              src="../assets/products/DarkSpotCorrectingGlow2.jpg"
-              class="base-img"
-            />
-            <img
-              src="../assets/products/DarkSpotCorrectingGlow.png"
-              class="hover-img"
-            />
-          </div>
-
-          <div
-            class="text-wraper w-full h-[20%] flex flex-col items-center text-center"
-          >
-            <p
-              class="flex flex-row items-center gap-1 text-green-500 font-bold text-[14px] mt-3"
-            >
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-4 text-green-500"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m8.25 7.5.415-.207a.75.75 0 0 1 1.085.67V10.5m0 0h6m-6 0h-1.5m1.5 0v5.438c0 .354.161.697.473.865a3.751 3.751 0 0 0 5.452-2.553c.083-.409-.263-.75-.68-.75h-.745M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                </svg>
-              </span>
-              2,200
-            </p>
-            <p class="font-semibold tracking-tight text-[14px] text-black mt-2">
-              Dark Spot Correcting Glow
-            </p>
-            <button
-              class="bt bg-white/50 px-6 py-2 mt-4 rounded-md font-extrabold border border-black/50 hover:border-black/10 transition-all duration-300"
-            >
-              Buy Now
-            </button>
-          </div>
-        </div>
-        <!-- 4nd card -->
-        <div
-          class="card1 w-[300px] h-[450px] flex flex-col bg-white/40 shadow-md rounded-sm"
-        >
-          <div class="image-card w-full h-[80%] rounded-t-sm">
-            <img
-              src="../assets/products/GreenPlumRefreshingToner.png"
-              class="base-img"
-            />
-            <img
-              src="../assets/products/GreenPlumRefreshingToner2.jpg"
-              class="hover-img"
-            />
-          </div>
-
-          <div
-            class="text-wraper w-full h-[20%] flex flex-col items-center text-center"
-          >
-            <p
-              class="flex flex-row items-center gap-1 text-green-500 font-bold text-[14px] mt-3"
-            >
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-4 text-green-500"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m8.25 7.5.415-.207a.75.75 0 0 1 1.085.67V10.5m0 0h6m-6 0h-1.5m1.5 0v5.438c0 .354.161.697.473.865a3.751 3.751 0 0 0 5.452-2.553c.083-.409-.263-.75-.68-.75h-.745M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                </svg>
-              </span>
-              2,200
-            </p>
-            <p class="font-semibold tracking-tight text-[14px] text-black mt-2">
-              Green Plum Refreshing Toner
-            </p>
-            <button
-              class="bt bg-white/50 px-6 py-2 mt-4 rounded-md font-extrabold border border-black/50 hover:border-black/10 transition-all duration-300"
-            >
-              Buy Now
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-```
+**Built with ❤️ for JUDN Team**

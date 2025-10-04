@@ -1,0 +1,256 @@
+/* JUDN Admin Panel Custom Styles */
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1C222C;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2A3441;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3A4451;
+}
+
+/* Focus Rings */
+:focus-visible {
+    outline: none;
+    ring: 2px;
+    ring-color: #D2B48C;
+    ring-offset: 2px;
+    ring-offset-color: #0F1216;
+}
+
+/* Smooth Transitions */
+.card, .button, .input, .select {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover Effects */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Button States */
+.btn-primary {
+    background: linear-gradient(135deg, #D2B48C 0%, #C7A87A 100%);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #C7A87A 0%, #B89A68 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(210, 180, 140, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Input Focus States */
+.input:focus, .select:focus {
+    border-color: #D2B48C;
+    box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.1);
+}
+
+/* Status Badge Colors */
+.badge-new {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3B82F6;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.badge-processing {
+    background: rgba(241, 196, 15, 0.1);
+    color: #F1C40F;
+    border: 1px solid rgba(241, 196, 15, 0.2);
+}
+
+.badge-shipped {
+    background: rgba(210, 180, 140, 0.1);
+    color: #D2B48C;
+    border: 1px solid rgba(210, 180, 140, 0.2);
+}
+
+.badge-completed {
+    background: rgba(46, 204, 113, 0.1);
+    color: #2ECC71;
+    border: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+.badge-cancelled {
+    background: rgba(231, 76, 60, 0.1);
+    color: #E74C3C;
+    border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+/* Mobile Responsive Utilities */
+@media (max-width: 640px) {
+    .table-card {
+        display: block;
+        background: #161A20;
+        border: 1px solid #2A3441;
+        border-radius: 0.9rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .table-card .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #2A3441;
+    }
+    
+    .table-card .card-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .table-card .card-actions {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+    }
+    
+    .table-card .status-badge {
+        justify-self: end;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .card:hover {
+        transform: none;
+    }
+    
+    .btn-primary:hover {
+        transform: none;
+    }
+}
+
+/* Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+    .bg-surface {
+        background-color: #161A20;
+    }
+    
+    .border-border {
+        border-color: #2A3441;
+    }
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #D2B48C;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Toast Animations */
+.toast-enter {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.toast-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toast-exit {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sidebar Collapse Animation */
+.sidebar-collapsed {
+    transform: translateX(-100%);
+}
+
+.main-expanded {
+    margin-left: 0;
+}
+
+/* Mobile sidebar behavior */
+@media (max-width: 768px) {
+    .sidebar-collapsed {
+        transform: translateX(-100%);
+    }
+    
+    .main-expanded {
+        margin-left: 0;
+    }
+}
+
+/* Desktop sidebar behavior */
+@media (min-width: 769px) {
+    .sidebar-collapsed {
+        transform: translateX(-100%);
+    }
+    
+    .main-expanded {
+        margin-left: 0;
+    }
+}
+
+/* Focus Trap for Modal */
+.modal-focus-trap {
+    outline: none;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .border-border {
+        border-width: 2px;
+    }
+    
+    .text-textMuted {
+        color: #E9ECF1;
+    }
+}
